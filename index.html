@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Invitation - Katalog Tema Undangan Digital</title>
+    <link rel="icon" type="image/png" href="asset/icon-removebg-preview.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (Indigo & Sky Blue Theme - No Pink!) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f3ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        secondary: '#0ea5e9', // Sky Blue
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+        
+        /* Custom Animation Delays */
+        .delay-100 { animation-delay: 100ms; transition-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; transition-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; transition-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; transition-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; transition-delay: 500ms; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-primary-100 selection:text-primary-900">
+
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-200/50 transition-all duration-300 animate-[slideUp_0.5s_ease-out_forwards]" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-secondary flex items-center justify-center text-white font-heading font-bold text-xl shadow-lg shadow-primary-500/30 group-hover:scale-110 transition-transform">
+                        YI
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-slate-900">
+                        Young<span class="text-primary-600">Invitation</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary-600 after:transition-all hover:after:w-full">Beranda</a>
+                    <a href="#kategori" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary-600 after:transition-all hover:after:w-full">Kategori Acara</a>
+                    <a href="#kategori" class="px-5 py-2.5 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                        Jelajahi Tema <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary-600 focus:outline-none p-2 transition-transform active:scale-95">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl origin-top transition-transform">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#beranda" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Beranda</a>
+                <a href="#kategori" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">Kategori Acara</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="beranda" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50"></div>
+        
+        <!-- Animated Blobs Background -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-40 -left-10 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob delay-200"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="animate-slide-up opacity-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm text-sm font-medium text-slate-600 mb-8 hover:shadow-md transition-shadow">
+                    <span class="flex h-2 w-2 rounded-full bg-primary-600 animate-pulse"></span>
+                    Lebih dari 400+ Tema Premium Tersedia
+                </div>
+                <h1 class="animate-slide-up delay-100 opacity-0 text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                    Kesan Pertama yang <br class="hidden md:block">
+                    <span class="gradient-text">Tak Terlupakan</span>
+                </h1>
+                <p class="animate-slide-up delay-200 opacity-0 text-lg md:text-xl text-slate-600 mb-6 leading-relaxed">
+                    Young Invitation menyediakan undangan digital modern, elegan, dan interaktif untuk setiap momen berharga Anda. Temukan berbagai pilihan desain premium yang dirancang khusus untuk kenyamanan para tamu Anda.
+                </p>
+                <div class="animate-slide-up delay-300 opacity-0 flex items-center justify-center gap-2 text-slate-400 text-sm mt-8 animate-bounce">
+                    <span>Gulir ke bawah untuk mengeksplorasi</span>
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kategori" class="py-20 bg-white relative border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                <h2 class="text-primary-600 font-semibold tracking-wide uppercase text-sm mb-2">Pilihan Kategori</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-4">13 Kategori Acara Spesial</h3>
+                <p class="text-slate-600 max-w-2xl mx-auto">Klik langsung pada kategori acara di bawah untuk melihat pratinjau tema premium secara live.</p>
+            </div>
+
+            <!-- Grid Layout untuk 13 Kategori -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                
+                <!-- Category 1: Pernikahan -->
+                <div class="reveal delay-100 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/1952', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/nikah (1).webp" alt="Pernikahan" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm text-red-500 flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Pernikahan</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Desain elegan & romantis untuk hari paling bahagia dalam hidup Anda.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Wisuda -->
+                <div class="reveal delay-200 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/5081?filter=formal', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/wisuda.webp" alt="Wisuda" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-blue-500 flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Wisuda</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Rayakan pencapaian akademis bersama keluarga dan sahabat terkasih.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Ulang Tahun Dewasa -->
+                <div class="reveal delay-300 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/15686?filter=dewasa', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/ultah.webp" alt="Ulang Tahun Dewasa" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-purple-500 flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Ulang Tahun Dewasa</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Perayaan ulang tahun modern, estetik, dan meriah untuk orang dewasa.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 4: Ulang Tahun Anak -->
+                <div class="reveal delay-400 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/36050?filter=anak', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/ultah-anak.webp" alt="Ulang Tahun Anak" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-yellow-500 flex items-center justify-center shadow-md transform group-hover:-rotate-12 transition-transform">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Ulang Tahun Anak</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Desain penuh warna-warni ceria dengan bermacam elemen lucu kesukaan si kecil.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 5: Peresmian -->
+                <div class="reveal delay-100 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/36908?filter=formal', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/peresmian.webp" alt="Peresmian" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-slate-600 flex items-center justify-center shadow-md transform group-hover:-rotate-12 transition-transform">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Peresmian</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Undangan formal untuk grand opening bisnis, kantor baru, maupun peluncuran brand.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 6: Bukber -->
+                <div class="reveal delay-200 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/40440?filter=muslim', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/bukber.webp" alt="Buka Puasa Bersama" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-teal-600 flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Bukber</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Tema hangat bernuansa Ramadhan penuh berkah untuk mempererat tali silaturahmi.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 7: Halalbihalal -->
+                <div class="reveal delay-300 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/38716?filter=muslim', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/bihalal.webp" alt="Halalbihalal" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-amber-600 flex items-center justify-center shadow-md transform group-hover:-rotate-12 transition-transform">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Halalbihalal</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Sambut hari raya kemenangan Idul Fitri bersama seluruh sanak saudara.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 8: Mapendes -->
+                <div class="reveal delay-400 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/34719', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/mepandes.webp" alt="Mapendes" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-yellow-600 flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-om"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Mapendes</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Desain khusus bernuansa sakral Hindu Bali untuk upacara adat potong gigi.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 9: Natal -->
+                <div class="reveal delay-100 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/230197?filter=natal', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/natal.webp" alt="Natal" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-red-600 flex items-center justify-center shadow-md transform group-hover:-rotate-12 transition-transform">
+                            <i class="fas fa-holly-berry"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Natal</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Tema damai penuh suka cita perayaan natal kudus bersama keluarga dekat.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 10: Aqiqah -->
+                <div class="reveal delay-200 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/36769', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/aqiqah.webp" alt="Aqiqah" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-emerald-500 flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Aqiqah</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Sambut kelahiran buah hati dengan nuansa Islami yang teduh dan menggemaskan.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 11: Tasyakuran -->
+                <div class="reveal delay-300 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/25426?filter=muslim', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/tasyukuran.webp" alt="Tasyakuran" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-indigo-500 flex items-center justify-center shadow-md transform group-hover:-rotate-12 transition-transform">
+                            <i class="fas fa-praying-hands"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Tasyakuran</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Bagikan rasa syukur atas rumah baru, kehamilan, maupun hajat syukuran lainnya.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Category 12: Khitan -->
+                <div class="reveal delay-400 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden hover:bg-white hover:shadow-xl hover:shadow-primary-500/10 hover:border-primary-100 cursor-pointer flex flex-col" onclick="window.open('https://id.sudahnikah.com/hasil/27302', '_blank')">
+                    <div class="relative h-80 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4">
+                        <img src="asset/khitan.webp" alt="Khitanan" class="h-full w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-secondary flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-child"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Khitan</h4>
+                            <p class="text-slate-500 text-sm mb-4 line-clamp-2">Katalog bertema jagoan pemberani untuk merayakan tasyakuran walimatul khitan.</p>
+                        </div>
+                        <span class="text-primary-600 text-xs font-semibold flex items-center group-hover:translate-x-2 transition-transform">
+                            Lihat Tema <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+               <!-- Category 13: Custom Acara / Event (Full-width banner with no spaces around image) -->
+                <div class="reveal delay-300 opacity-0 translate-y-10 transition-all duration-700 ease-out group bg-gradient-to-br from-primary-50 to-secondary/10 border border-slate-100 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-primary-500/20 hover:border-primary-200 cursor-pointer lg:col-span-3 xl:col-span-4 flex flex-col md:flex-row" onclick="window.open('https://wa.me/6281234567890?text=Halo%20Admin%20Young%20Invitation,%20saya%20tertarik%20untuk%20membuat%20undangan%20Custom%20Acara%20/%20Event%20spesial.', '_blank')">
+                    <div class="relative h-80 md:h-auto md:w-1/2 overflow-hidden bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=600&q=80" alt="Custom Event" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm text-primary-600 flex items-center justify-center shadow-md transform group-hover:rotate-180 transition-transform duration-700">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-1/2 flex flex-col justify-between bg-white/50 backdrop-blur-sm">
+                        <div>
+                            <h4 class="text-2xl font-heading font-bold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">Custom Acara / Event</h4>
+                            <p class="text-slate-600 text-base leading-relaxed mb-6">Punya perayaan unik tersendiri? Kami siap mewujudkan tema spesial khusus sesuai visi dan imajinasi kreatif Anda. Konsultasikan langsung lewat WhatsApp.</p>
+                        </div>
+                        <div>
+                             <span class="inline-block px-6 py-3 bg-white text-primary-600 rounded-full font-bold text-sm shadow-sm border border-primary-100 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300 group-hover:shadow-lg group-hover:shadow-primary-500/30">
+                                Hubungi Kami di WhatsApp <i class="fab fa-whatsapp ml-1 text-base"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-slate-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-900/50 to-secondary/30"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out text-3xl md:text-5xl font-heading font-bold text-white mb-6">Siap Membuat Undangan Anda?</h2>
+            <p class="reveal delay-200 opacity-0 translate-y-10 transition-all duration-700 ease-out text-slate-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                Proses cepat, desain eksklusif, dan dukungan fitur lengkap (RSVP, Musik, Galeri, Amplop Digital, hingga Generator Ucapan). <br>
+                <span class="text-white font-medium">Bebas sebar undangan tanpa batas & dilengkapi notif kehadiran via Telegram.</span>
+            </p>
+            <button onclick="window.open('https://wa.me/6281234567890?text=Halo%20Admin%20Young%20Invitation,%20saya%20ingin%20bertanya%20mengenai%20pembuatan%20undangan%20digital.', '_blank')" class="reveal delay-400 opacity-0 translate-y-10 transition-all duration-700 ease-out px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] group">
+                Hubungi Admin Sekarang <i class="fab fa-whatsapp ml-2 text-green-500 group-hover:scale-125 transition-transform"></i>
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-200 pt-16 pb-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="reveal opacity-0 -translate-x-10 transition-all duration-700 ease-out col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-secondary flex items-center justify-center text-white font-heading font-bold text-sm group-hover:rotate-12 transition-transform">YI</div>
+                        <span class="font-heading font-bold text-xl text-slate-900">Young Invitation</span>
+                    </div>
+                    <p class="text-slate-500 text-sm max-w-sm mb-6">Platform pembuatan undangan digital masa kini. Estetik, praktis, dan ramah lingkungan.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary-600 hover:text-white transition-all hover:scale-110 hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary-600 hover:text-white transition-all hover:scale-110 hover:-translate-y-1"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary-600 hover:text-white transition-all hover:scale-110 hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="reveal delay-200 opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <h4 class="font-bold text-slate-900 mb-4">Layanan</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> Undangan Website</a></li>
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> Undangan Video</a></li>
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> Undangan Gambar</a></li>
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> Custom Desain</a></li>
+                    </ul>
+                </div>
+                <div class="reveal delay-400 opacity-0 translate-y-10 transition-all duration-700 ease-out">
+                    <h4 class="font-bold text-slate-900 mb-4">Bantuan</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> Cara Pemesanan</a></li>
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> FAQ</a></li>
+                        <li><a href="#" class="hover:text-primary-600 transition-colors flex items-center gap-2 group"><span class="w-1.5 h-1.5 rounded-full bg-primary-300 opacity-0 group-hover:opacity-100 transition-opacity"></span> Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reveal delay-500 opacity-0 translate-y-5 transition-all duration-700 ease-out border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-400 text-sm">&copy; 2026 Young Invitation. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-sm text-slate-400">
+                    Made with <i class="fas fa-heart text-red-500 animate-pulse"></i> in Indonesia
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Scroll Observer Animation (Reveal on scroll) ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-y-5', '-translate-x-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // --- Navbar Scroll Effect ---
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('border-slate-200/50', 'border-transparent');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('border-transparent', 'border-slate-200/50');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => menu.classList.add('scale-y-100'), 10);
+            } else {
+                menu.classList.remove('scale-y-100');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+            }
+        });
+
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
